@@ -1,0 +1,21 @@
+version: '3.6'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: clarity
+      MONGO_INITDB_ROOT_PASSWORD: clarity#demo
+      MONGO_INITDB_DATABASE: users
+    ports:
+      - 27017:27017
+    volumes:
+      - docker-data:/data/db
+      - ./db-init/:/docker-entrypoint-initdb.d
+
+
+
+volumes:
+  docker-data:
+    name: users-mogoDB-data
+            
